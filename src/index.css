@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 240 25% 98%;
+    --foreground: 240 10% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 15%;
+
+    --primary: 250 85% 60%;
+    --primary-foreground: 240 25% 98%;
+    --primary-glow: 250 85% 70%;
+
+    --secondary: 260 80% 65%;
+    --secondary-foreground: 240 25% 98%;
+
+    --muted: 240 20% 96%;
+    --muted-foreground: 240 5% 50%;
+
+    --accent: 270 75% 70%;
+    --accent-foreground: 240 10% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 240 25% 98%;
+
+    --border: 240 15% 92%;
+    --input: 240 15% 92%;
+    --ring: 250 85% 60%;
+
+    --radius: 0.75rem;
+
+    --gradient-hero: linear-gradient(135deg, hsl(250 85% 60%), hsl(270 75% 70%));
+    --gradient-card: linear-gradient(to bottom right, hsl(240 25% 99%), hsl(270 75% 98%));
+    --shadow-card: 0 4px 20px -2px hsl(250 85% 60% / 0.12);
+    --shadow-card-hover: 0 8px 30px -4px hsl(250 85% 60% / 0.2);
+    
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 15% 10%;
+    --foreground: 240 25% 98%;
+
+    --card: 240 15% 14%;
+    --card-foreground: 240 25% 98%;
+
+    --popover: 240 15% 14%;
+    --popover-foreground: 240 25% 98%;
+
+    --primary: 250 85% 60%;
+    --primary-foreground: 240 25% 98%;
+    --primary-glow: 250 85% 70%;
+
+    --secondary: 260 80% 65%;
+    --secondary-foreground: 240 15% 10%;
+
+    --muted: 240 15% 18%;
+    --muted-foreground: 240 10% 65%;
+
+    --accent: 270 75% 70%;
+    --accent-foreground: 240 15% 10%;
+
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 240 25% 98%;
+
+    --border: 240 15% 22%;
+    --input: 240 15% 22%;
+    --ring: 250 85% 60%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(250 85% 45%), hsl(270 75% 55%));
+    --gradient-card: linear-gradient(to bottom right, hsl(240 15% 16%), hsl(240 15% 14%));
+    --shadow-card: 0 4px 20px -2px hsl(250 85% 60% / 0.2);
+    --shadow-card-hover: 0 8px 30px -4px hsl(250 85% 60% / 0.3);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-in;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out;
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .gradient-text {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .flip-card {
+    perspective: 1000px;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+}
