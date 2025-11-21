@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  // REQUIRED FOR GITHUB PAGES
+  // REQUIRED FOR GITHUB PAGES (MAKE SURE THIS EXACT LINE IS HERE)
   base: "/yashashvini-website/",
 
   server: {
@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => ({
 
   plugins: [
     react(),
-    mode === "development" && componentTagger(),
+    mode === "development" && componentTagger()
   ].filter(Boolean),
 
   resolve: {
@@ -23,3 +23,4 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }));
+
